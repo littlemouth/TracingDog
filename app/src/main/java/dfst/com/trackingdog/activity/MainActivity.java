@@ -31,7 +31,7 @@ public class MainActivity extends Activity {
         if (aMap == null) {
             aMap = mapView.getMap();
         }
-        
+
     }
 
     /**
