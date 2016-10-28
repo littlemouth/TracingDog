@@ -30,6 +30,8 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.2.1'
     compile (name : 'ioc-1.1.0', ext : 'aar')
+    compile (name : 'easy-android-core', ext : 'aar')
+    compile (name : 'easy-android-ui', ext : 'aar')
     compile files('libs/AMap_2DMap_V2.9.0_20160525.jar')
     compile files('libs/AMap_Location_V2.4.1_20160414.jar')
 }

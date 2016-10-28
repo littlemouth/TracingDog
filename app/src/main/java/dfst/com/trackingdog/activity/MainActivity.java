@@ -1,72 +1,55 @@
 package dfst.com.trackingdog.activity;
 
-import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.content.ContextCompat;
+import android.widget.TextView;
 
-import com.amap.api.maps2d.AMap;
-import com.amap.api.maps2d.MapView;
-
+import dfst.com.tracingdog.fragment.TracingDogsFragment;
+import dfst.com.tracingdog.fragment.TracingListFragment;
+import dfst.com.tracingdog.fragment.TracingSelfFragment;
+import dfst.com.tracingdog.fragment.TracingWordFragment;
 import dfst.com.trackingdog.R;
+import dfst.com.ui.widget.TabView;
 
-public class MainActivity extends Activity {
+public class MainActivity extends FragmentActivity {
 
-    private MapView mapView;
-    private AMap aMap;
+    private TabView tabView;
+    private TextView pageLabelTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mapView = (MapView) findViewById(R.id.mapView);
-        mapView.onCreate(savedInstanceState);
+        tabView = (TabView) findViewById(R.id.main_activity_tabview);
+        int[] checkedIcons = {R.mipmap.home_checked, R.mipmap.recents_checked, R.mipmap.keypad_checked, R.mipmap.self_checked};
+        int[] unCheckedIcons = {R.mipmap.home_unchecked, R.mipmap.recents_unchecked, R.mipmap.keypad_unchecked, R.mipmap.self_unchecked};
+        final String[] labels = {"追踪", "追友", "圈子", "我的"};
 
-        init();
-    }
+        TabView.Options options = new TabView.Options();
+        options.pages = new Fragment[]{new TracingListFragment(), new TracingDogsFragment(), new TracingWordFragment(), new TracingSelfFragment()};
+        options.checkedIcons = checkedIcons;
+        options.unCheckedIcons = unCheckedIcons;
+        options.labels = labels;
+        options.checkedLabelColor = ContextCompat.getColor(this, R.color.common_bg_green);
+        options.unCheckedLabelColor = Color.GRAY;
+        options.defaultPosition = 0;
+        tabView.init(options);
 
-    /**
-     * 初始化AMap对象
-     */
-    private void init() {
-        if (aMap == null) {
-            aMap = mapView.getMap();
-        }
+        tabView.setTabDeviderHeight(0.5f);
+        tabView.setTabBackgroundColor(ContextCompat.getColor(this, R.color.gray_f5f5f5));
 
-    }
+        tabView.setOnSelectChangedListener(new TabView.OnSelectChangedListener() {
+            @Override
+            public void onSelectedChanged(int position) {
+                pageLabelTextView.setText(labels[position]);
+            }
+        });
 
-    /**
-     * 方法必须重写
-     */
-    @Override
-    protected void onResume() {
-        super.onResume();
-        mapView.onResume();
-    }
-
-    /**
-     * 方法必须重写
-     */
-    @Override
-    protected void onPause() {
-        super.onPause();
-        mapView.onPause();
-    }
-
-    /**
-     * 方法必须重写
-     */
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        mapView.onSaveInstanceState(outState);
-    }
-
-    /**
-     * 方法必须重写
-     */
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mapView.onDestroy();
+        pageLabelTextView = (TextView) findViewById(R.id.main_title_label_textview);
+        pageLabelTextView.setText(labels[0]);
     }
 }
