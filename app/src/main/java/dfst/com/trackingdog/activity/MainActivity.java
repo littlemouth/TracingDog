@@ -1,10 +1,13 @@
 package dfst.com.trackingdog.activity;
 
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
+import android.view.WindowManager;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import dfst.com.tracingdog.fragment.TracingDogsFragment;
@@ -14,7 +17,7 @@ import dfst.com.tracingdog.fragment.TracingWordFragment;
 import dfst.com.trackingdog.R;
 import dfst.com.ui.widget.TabView;
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends BaseFragmentActivity {
 
     private TabView tabView;
     private TextView pageLabelTextView;

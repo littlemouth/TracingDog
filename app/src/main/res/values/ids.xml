@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <item name="main_activity_tabview" type="id">false</item>
-    <item name="main_activity_title_relativelayout" type="id">false</item>
+    <item name="common_activity_title_relativelayout" type="id">false</item>
     <item name="main_title_label_textview" type="id">false</item>
 </resources>
