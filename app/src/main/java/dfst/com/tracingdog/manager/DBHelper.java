@@ -32,4 +32,17 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
+    SQLiteDatabase openDatabase() {
+        if (database == null) {
+            database = getWritableDatabase();
+        }
+
+        return database;
+    }
+
+    void closeDatabase() {
+        if (database != null && database.isOpen()) {
+            database.close();
+        }
+    }
 }

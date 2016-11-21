@@ -1,4 +1,4 @@
-package dfst.com.trackingdog.activity;
+package dfst.com.tracingdog.activity;
 
 import android.os.Build;
 import android.support.v4.app.FragmentActivity;
@@ -9,7 +9,7 @@ import android.view.WindowManager;
 import dfst.com.core.util.DensityUtil;
 import dfst.com.tracingdog.manager.DBManager;
 import dfst.com.tracingdog.manager.HttpManager;
-import dfst.com.trackingdog.R;
+import dfst.com.tracingdog.R;
 
 /**
  * Created by Ecci-07 on 2016/10/28.

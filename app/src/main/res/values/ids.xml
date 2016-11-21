@@ -3,4 +3,7 @@
     <item name="main_activity_tabview" type="id">false</item>
     <item name="common_activity_title_relativelayout" type="id">false</item>
     <item name="main_title_label_textview" type="id">false</item>
+
+    <!-- record fragment -->
+    <item name="record_listview" type="id">false</item>
 </resources>

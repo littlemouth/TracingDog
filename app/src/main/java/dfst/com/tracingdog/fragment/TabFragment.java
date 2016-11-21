@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 
 import dfst.com.tracingdog.manager.DBManager;
 import dfst.com.tracingdog.manager.HttpManager;
-import dfst.com.trackingdog.activity.BaseFragmentActivity;
+import dfst.com.tracingdog.activity.BaseFragmentActivity;
 
 /**
  * Created by yanfei on 2016-10-25.

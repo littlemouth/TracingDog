@@ -1,4 +1,4 @@
-package dfst.com.trackingdog;
+package dfst.com.tracingdog;
 
 import org.junit.Test;
 

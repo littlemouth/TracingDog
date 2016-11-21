@@ -27,6 +27,8 @@ public class DBManager {
     }
 
     public void closeDB() {
-
+        if (dbHelper != null) {
+            dbHelper.closeDatabase();
+        }
     }
 }

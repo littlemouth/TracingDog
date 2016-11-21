@@ -1,4 +1,4 @@
-package dfst.com.trackingdog.activity;
+package dfst.com.tracingdog.activity;
 
 import android.app.Activity;
 import android.os.Build;

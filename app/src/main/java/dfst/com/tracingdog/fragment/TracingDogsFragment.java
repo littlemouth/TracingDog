@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import dfst.com.trackingdog.R;
+import dfst.com.tracingdog.R;
 
 /**
  * Created by yanfei on 2016-10-25.

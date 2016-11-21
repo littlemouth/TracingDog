@@ -1,20 +1,16 @@
-package dfst.com.trackingdog.activity;
+package dfst.com.tracingdog.activity;
 
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
-import android.view.WindowManager;
-import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import dfst.com.tracingdog.fragment.TracingDogsFragment;
-import dfst.com.tracingdog.fragment.TracingListFragment;
+import dfst.com.tracingdog.fragment.TracingRecordFragment;
 import dfst.com.tracingdog.fragment.TracingSelfFragment;
 import dfst.com.tracingdog.fragment.TracingWordFragment;
-import dfst.com.trackingdog.R;
+import dfst.com.tracingdog.R;
 import dfst.com.ui.widget.TabView;
 
 public class MainActivity extends BaseFragmentActivity {
@@ -33,7 +29,7 @@ public class MainActivity extends BaseFragmentActivity {
         final String[] labels = {"追踪", "追友", "圈子", "我的"};
 
         TabView.Options options = new TabView.Options();
-        options.pages = new Fragment[]{new TracingListFragment(), new TracingDogsFragment(), new TracingWordFragment(), new TracingSelfFragment()};
+        options.pages = new Fragment[]{new TracingRecordFragment(), new TracingDogsFragment(), new TracingWordFragment(), new TracingSelfFragment()};
         options.checkedIcons = checkedIcons;
         options.unCheckedIcons = unCheckedIcons;
         options.labels = labels;

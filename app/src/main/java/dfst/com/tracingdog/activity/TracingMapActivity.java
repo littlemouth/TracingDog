@@ -1,4 +1,4 @@
-package dfst.com.trackingdog.activity;
+package dfst.com.tracingdog.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -6,7 +6,7 @@ import android.os.Bundle;
 import com.amap.api.maps2d.AMap;
 import com.amap.api.maps2d.MapView;
 
-import dfst.com.trackingdog.R;
+import dfst.com.tracingdog.R;
 
 /**
  * Created by yanfei on 2016-10-25.

@@ -1,4 +1,4 @@
-package dfst.com.trackingdog;
+package dfst.com.tracingdog;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

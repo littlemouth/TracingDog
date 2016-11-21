@@ -10,7 +10,7 @@ import android.widget.Button;
 
 import java.io.IOException;
 
-import dfst.com.trackingdog.R;
+import dfst.com.tracingdog.R;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -20,33 +20,20 @@ import okhttp3.Response;
 /**
  * Created by yanfei on 2016-10-25.
  */
-public class TracingListFragment extends TabFragment {
-    private Button button;
-    private OkHttpClient client = new OkHttpClient();
-    public static final MediaType JSON
-            = MediaType.parse("application/json; charset=utf-8");
+public class TracingRecordFragment extends TabFragment {
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_tracing_list, null);
-        button = (Button) root.findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new Thread() {
-                    public void run() {
-                        try {
-                            post("http://192.168.42.53:8080/historylocation/1", "{\"userId\": 123}");
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }.start();
-            }
-        });
+
         return root;
     }
 
+
+    /*private OkHttpClient client = new OkHttpClient();
+    public static final MediaType JSON
+            = MediaType.parse("application/json; charset=utf-8");
     private String post(String url, String json) throws IOException {
         RequestBody body = RequestBody.create(JSON, json);
         Request request = new Request.Builder()
@@ -55,5 +42,5 @@ public class TracingListFragment extends TabFragment {
                 .build();
         Response response = client.newCall(request).execute();
         return response.body().string();
-    }
+    }*/
 }
