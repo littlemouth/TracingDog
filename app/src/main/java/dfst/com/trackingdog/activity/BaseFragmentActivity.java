@@ -5,15 +5,18 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.FrameLayout;
 
 import dfst.com.core.util.DensityUtil;
+import dfst.com.tracingdog.manager.DBManager;
+import dfst.com.tracingdog.manager.HttpManager;
 import dfst.com.trackingdog.R;
 
 /**
  * Created by Ecci-07 on 2016/10/28.
  */
 public class BaseFragmentActivity extends FragmentActivity {
+    protected DBManager dbManager;
+    protected HttpManager httpManager;
 
     @Override
     public void setContentView(int layoutResID) {
@@ -28,6 +31,9 @@ public class BaseFragmentActivity extends FragmentActivity {
             ViewGroup.LayoutParams params = title.getLayoutParams();
             params.height = DensityUtil.dip2px(this, 50) + statusBarHeight;
         }
+
+        dbManager = DBManager.getInstance();
+        httpManager = HttpManager.getInstance();
     }
 
     private int getStatusBarHeight() {
@@ -37,5 +43,13 @@ public class BaseFragmentActivity extends FragmentActivity {
             result = getResources().getDimensionPixelSize(resourceId);
         }
         return result;
+    }
+
+    public DBManager getDbManager() {
+        return dbManager;
+    }
+
+    public HttpManager getHttpManager() {
+        return  httpManager;
     }
 }

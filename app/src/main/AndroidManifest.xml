@@ -7,6 +7,7 @@
         android:icon="@mipmap/logo2"
         android:label="@string/app_name"
         android:supportsRtl="true"
+        android:name="dfst.com.tracingdog.global.TdApp"
         android:theme="@style/AppTheme">
 
         <meta-data
