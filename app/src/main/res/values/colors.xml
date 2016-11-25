@@ -5,4 +5,5 @@
     <color name="colorAccent">#FF4081</color>
     <color name="common_bg_green" >#00BF8E</color>
     <color name="gray_f5f5f5" >#F5F5F5</color>
+    <color name="gray_e5e5e5" >#e5e5e5</color>
 </resources>

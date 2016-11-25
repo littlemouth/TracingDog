@@ -1,8 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:layout_height="match_parent">
-    <FrameLayout
-        android:layout_width="100dp"
-        android:layout_height="100dp"></FrameLayout>
+    android:layout_height="match_parent"
+    android:gravity="center_vertical"
+    android:padding="7dp">
+    <dfst.com.tracingdog.widget.HeadView
+        android:id="@id/record_listview_item_headview"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="5dp"/>
+    <RelativeLayout
+        android:id="@id/record_listview_item_content_relativelayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginLeft="20dp">
+        <TextView
+            android:id="@id/record_listview_item_content_name_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="燕飞"
+            android:textSize="15sp"/>
+        <ImageView
+            android:id="@id/record_listview_item_content_location_imageview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/record_listview_item_content_name_textview"
+            android:src="@mipmap/location"/>
+        <TextView
+            android:id="@id/record_listview_item_content_location_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="上城区近江八园  附近"
+            android:layout_below="@id/record_listview_item_content_name_textview"
+            android:layout_toRightOf="@id/record_listview_item_content_location_imageview"/>
+    </RelativeLayout>
+    <TextView
+        android:id="@id/record_listview_item_content_time_textview"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="20:15"/>
 </LinearLayout>

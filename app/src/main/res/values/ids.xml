@@ -6,4 +6,10 @@
 
     <!-- record fragment -->
     <item name="record_listview" type="id">false</item>
+    <item name="record_listview_item_headview" type="id">false</item>
+    <item name="record_listview_item_content_relativelayout" type="id">false</item>
+    <item name="record_listview_item_content_name_textview" type="id">false</item>
+    <item name="record_listview_item_content_location_imageview" type="id">false</item>
+    <item name="record_listview_item_content_location_textview" type="id">false</item>
+    <item name="record_listview_item_content_time_textview" type="id">false</item>
 </resources>
