@@ -123,7 +123,8 @@ public class HeadView extends View {
         }
 
         mBitmaps.clear();
-        for (Bitmap bitmap : bitmaps) {
+        for (int i = 0; i < (bitmaps.length > 9 ? 9 : bitmaps.length); i++) {
+            Bitmap bitmap = bitmaps[i];
             bitmap = ImageUtil.compressImage(bitmap, bitmapLength, bitmapLength);
             mBitmaps.add(bitmap);
         }

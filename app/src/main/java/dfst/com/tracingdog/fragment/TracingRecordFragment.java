@@ -3,6 +3,7 @@ package dfst.com.tracingdog.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +37,6 @@ public class TracingRecordFragment extends TabFragment {
         for (int i = 0; i < 100; i++) {
             data.add("item-" + i);
         }
-
 
     }
 

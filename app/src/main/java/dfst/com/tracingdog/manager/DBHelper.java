@@ -19,17 +19,16 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        createTable();
+        createTable(db);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         if (oldVersion != newVersion)
-            createTable();
+            createTable(db);
     }
 
-    private void createTable() {
-
+    private void createTable(SQLiteDatabase db) {
     }
 
     SQLiteDatabase openDatabase() {
