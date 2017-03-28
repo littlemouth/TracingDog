@@ -10,6 +10,11 @@ android {
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
+    }
+    dexOptions {
+        preDexLibraries = false
+        javaMaxHeapSize "4g"
     }
     buildTypes {
         release {
@@ -30,10 +35,9 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.2.1'
-    compile 'com.squareup.okhttp3:okhttp:3.4.2'
-    compile(name: 'easy-android-core', ext: 'aar')
-    compile(name: 'easy-android-ui', ext: 'aar')
-    //compile 'com.github.dfst.com.core:Core:1.0'
+    compile 'com.github.littlemouth.EasyAndroid:core:1.0'
+    compile 'com.github.littlemouth.EasyAndroid:ui:1.0'
+    compile 'com.github.littlemouth.EasyAndroid:network:1.0'
     compile files('libs/AMap_2DMap_V2.9.0_20160525.jar')
     compile files('libs/AMap_Location_V2.4.1_20160414.jar')
 }

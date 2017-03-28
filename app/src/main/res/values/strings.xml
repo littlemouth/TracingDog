@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">追踪狗</string>
+
+    <!-- page name -->
+    <string name="page_trace">足迹</string>
+    <string name="page_dogs">狗窝</string>
+    <string name="page_news">狗粮</string>
+    <string name="page_self">我的</string>
 </resources>

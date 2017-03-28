@@ -1,47 +1,52 @@
 package dfst.com.tracingdog.activity;
 
-import android.graphics.Color;
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.widget.TextView;
 
+import com.dfst.core.annotation.Activity;
+import com.dfst.core.annotation.After;
+import com.dfst.core.annotation.Resource;
+import com.dfst.core.annotation.View;
+import com.dfst.ui.widget.PageView;
+
+import dfst.com.tracingdog.R;
 import dfst.com.tracingdog.fragment.TracingDogsFragment;
 import dfst.com.tracingdog.fragment.TracingRecordFragment;
 import dfst.com.tracingdog.fragment.TracingSelfFragment;
 import dfst.com.tracingdog.fragment.TracingWordFragment;
-import dfst.com.tracingdog.R;
-import dfst.com.ui.widget.TabView;
 
+@Activity(R.layout.activity_main)
 public class MainActivity extends BaseFragmentActivity {
 
-    private TabView tabView;
+    @View(R.id.main_activity_tabview)
+    private PageView pageView;
+    @View(R.id.main_title_label_textview)
     private TextView pageLabelTextView;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    @Resource
+    private String page_trace, page_dogs, page_news, page_self;
 
-        tabView = (TabView) findViewById(R.id.main_activity_tabview);
-        int[] checkedIcons = {R.mipmap.home_checked, R.mipmap.recents_checked, R.mipmap.keypad_checked, R.mipmap.self_checked};
-        int[] unCheckedIcons = {R.mipmap.home_unchecked, R.mipmap.recents_unchecked, R.mipmap.keypad_unchecked, R.mipmap.self_unchecked};
-        final String[] labels = {"追踪", "追友", "圈子", "我的"};
+    @After
+    private void init() {
+        int[] checkedIcons = {R.mipmap.trace_checked, R.mipmap.dogs_checked, R.mipmap.bone_checked, R.mipmap.self_checked};
+        int[] unCheckedIcons = {R.mipmap.trace_unchecked, R.mipmap.dogs_unchecked, R.mipmap.bone_unchecked, R.mipmap.self_unchecked};
+        final String[] labels = {page_trace, page_dogs, page_news, page_self};
 
-        TabView.Options options = new TabView.Options();
+        PageView.Options options = new PageView.Options();
         options.pages = new Fragment[]{new TracingRecordFragment(), new TracingDogsFragment(), new TracingWordFragment(), new TracingSelfFragment()};
         options.checkedIcons = checkedIcons;
         options.unCheckedIcons = unCheckedIcons;
         options.labels = labels;
         options.checkedLabelColor = ContextCompat.getColor(this, R.color.common_bg_green);
-        options.unCheckedLabelColor = Color.GRAY;
+        options.unCheckedLabelColor = ContextCompat.getColor(this, R.color.unchecked_gray);
         options.defaultPosition = 0;
-        tabView.init(options);
+        pageView.init(options);
 
-        tabView.setTabDeviderHeight(0.5f);
-        tabView.setTabBackgroundColor(ContextCompat.getColor(this, R.color.gray_f5f5f5));
+        pageView.setTabDeviderHeight(0.5f);
+        pageView.setTabBackgroundColor(ContextCompat.getColor(this, R.color.gray_f5f5f5));
 
-        tabView.setOnSelectChangedListener(new TabView.OnSelectChangedListener() {
+        pageView.setOnSelectChangedListener(new PageView.OnSelectChangedListener() {
             @Override
             public void onSelectedChanged(int position) {
                 pageLabelTextView.setText(labels[position]);
@@ -51,4 +56,38 @@ public class MainActivity extends BaseFragmentActivity {
         pageLabelTextView = (TextView) findViewById(R.id.main_title_label_textview);
         pageLabelTextView.setText(labels[0]);
     }
+
+    /*@Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        pageView = (PageView) findViewById(R.id.main_activity_tabview);
+        int[] checkedIcons = {R.mipmap.home_checked, R.mipmap.recents_checked, R.mipmap.keypad_checked, R.mipmap.self_checked};
+        int[] unCheckedIcons = {R.mipmap.home_unchecked, R.mipmap.recents_unchecked, R.mipmap.keypad_unchecked, R.mipmap.self_unchecked};
+        final String[] labels = {"追踪", "追友", "圈子", "我的"};
+
+        PageView.Options options = new PageView.Options();
+        options.pages = new Fragment[]{new TracingRecordFragment(), new TracingDogsFragment(), new TracingWordFragment(), new TracingSelfFragment()};
+        options.checkedIcons = checkedIcons;
+        options.unCheckedIcons = unCheckedIcons;
+        options.labels = labels;
+        options.checkedLabelColor = ContextCompat.getColor(this, R.color.common_bg_green);
+        options.unCheckedLabelColor = Color.GRAY;
+        options.defaultPosition = 0;
+        pageView.init(options);
+
+        pageView.setTabDeviderHeight(0.5f);
+        pageView.setTabBackgroundColor(ContextCompat.getColor(this, R.color.gray_f5f5f5));
+
+        pageView.setOnSelectChangedListener(new PageView.OnSelectChangedListener() {
+            @Override
+            public void onSelectedChanged(int position) {
+                pageLabelTextView.setText(labels[position]);
+            }
+        });
+
+        pageLabelTextView = (TextView) findViewById(R.id.main_title_label_textview);
+        pageLabelTextView.setText(labels[0]);
+    }*/
 }

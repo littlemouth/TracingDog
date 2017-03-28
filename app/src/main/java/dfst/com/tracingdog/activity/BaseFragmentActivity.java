@@ -6,10 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 
-import dfst.com.core.util.DensityUtil;
+import com.dfst.core.util.DensityUtil;
+
+import dfst.com.tracingdog.R;
 import dfst.com.tracingdog.manager.DBManager;
 import dfst.com.tracingdog.manager.HttpManager;
-import dfst.com.tracingdog.R;
 
 /**
  * Created by Ecci-07 on 2016/10/28.

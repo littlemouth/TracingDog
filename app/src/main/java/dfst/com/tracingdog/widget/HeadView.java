@@ -9,11 +9,12 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.dfst.core.util.DensityUtil;
+import com.dfst.core.util.ImageUtil;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import dfst.com.core.util.DensityUtil;
-import dfst.com.core.util.ImageUtil;
 import dfst.com.tracingdog.R;
 
 /**
