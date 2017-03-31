@@ -4,10 +4,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.widget.TextView;
 
-import com.dfst.core.annotation.Activity;
+import com.dfst.core.annotation.AView;
 import com.dfst.core.annotation.After;
+import com.dfst.core.annotation.Layout;
 import com.dfst.core.annotation.Resource;
-import com.dfst.core.annotation.View;
 import com.dfst.ui.widget.PageView;
 
 import dfst.com.tracingdog.R;
@@ -16,12 +16,12 @@ import dfst.com.tracingdog.fragment.TracingRecordFragment;
 import dfst.com.tracingdog.fragment.TracingSelfFragment;
 import dfst.com.tracingdog.fragment.TracingWordFragment;
 
-@Activity(R.layout.activity_main)
+@Layout(R.layout.activity_main)
 public class MainActivity extends BaseFragmentActivity {
 
-    @View(R.id.main_activity_tabview)
+    @AView(R.id.main_activity_tabview)
     private PageView pageView;
-    @View(R.id.main_title_label_textview)
+    @AView(R.id.main_title_label_textview)
     private TextView pageLabelTextView;
 
     @Resource

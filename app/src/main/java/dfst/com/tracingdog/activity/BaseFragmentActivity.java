@@ -6,8 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 
-import com.dfst.core.util.DensityUtil;
-
 import dfst.com.tracingdog.R;
 import dfst.com.tracingdog.manager.DBManager;
 import dfst.com.tracingdog.manager.HttpManager;
@@ -28,9 +26,10 @@ public class BaseFragmentActivity extends FragmentActivity {
             //透明导航栏
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
             int statusBarHeight = getStatusBarHeight();
-            View title = findViewById(R.id.common_activity_title_relativelayout);
-            ViewGroup.LayoutParams params = title.getLayoutParams();
-            params.height = DensityUtil.dip2px(this, 50) + statusBarHeight;
+            View statusBar = findViewById(R.id.status_bar_view);
+            statusBar.setVisibility(View.VISIBLE);
+            ViewGroup.LayoutParams params = statusBar.getLayoutParams();
+            params.height = statusBarHeight;
         }
 
         dbManager = DBManager.getInstance();

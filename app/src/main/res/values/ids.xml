@@ -2,7 +2,32 @@
 <resources>
     <item name="main_activity_tabview" type="id">false</item>
     <item name="common_activity_title_relativelayout" type="id">false</item>
+    <item name="common_activity_title_linearlayout" type="id">false</item>
+    <item name="status_bar_view" type="id">false</item>
     <item name="main_title_label_textview" type="id">false</item>
+
+    <!-- login activity -->
+    <item name="loginRegisterTextView" type="id">false</item>
+    <item name="loginAccountLinearLayout" type="id">false</item>
+    <item name="loginAccountTextView" type="id">false</item>
+    <item name="loginPasswordTextView" type="id">false</item>
+    <item name="loginPasswordLinearLayout" type="id">false</item>
+    <item name="loginAccountEditText" type="id">false</item>
+    <item name="loginPasswordEditText" type="id">false</item>
+    <item name="loginButton" type="id">false</item>
+    <item name="loginHeadImageView" type="id">false</item>
+    <item name="loginHeadRelativeLayout" type="id">false</item>
+    <item name="loginAccountLineView" type="id">false</item>
+    <item name="loginPasswordLineView" type="id">false</item>
+    <item name="loginForgetPasswordTextView" type="id">false</item>
+    <item name="loginMoreLeftView" type="id">false</item>
+    <item name="loginMoreRightView" type="id">false</item>
+    <item name="loginMoreTextView" type="id">false</item>
+    <item name="loginAccountClearImageView" type="id">false</item>
+    <item name="loginShowPasswordImageView" type="id">false</item>
+    <item name="loginByQQImageView" type="id">false</item>
+    <item name="loginByWeiXinImageView" type="id">false</item>
+    <item name="loginByWeiBoImageView" type="id">false</item>
 
     <!-- record fragment -->
     <item name="record_listview" type="id">false</item>
@@ -12,4 +37,7 @@
     <item name="record_listview_item_content_location_imageview" type="id">false</item>
     <item name="record_listview_item_content_location_textview" type="id">false</item>
     <item name="record_listview_item_content_time_textview" type="id">false</item>
+
+    <!-- dogs fragment -->
+    <item name="dogs_listview" type="id">false</item>
 </resources>

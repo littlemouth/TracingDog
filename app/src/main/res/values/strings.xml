@@ -1,6 +1,17 @@
 <resources>
     <string name="app_name">追踪狗</string>
 
+    <!-- login -->
+    <string name="login_register">注册</string>
+    <string name="login_account">账号</string>
+    <string name="login_password">密码</string>
+    <string name="login_account_hint">请输入账号</string>
+    <string name="login_password_hint">请输入密码</string>
+    <string name="login_login_in">登录</string>
+    <string name="loginForgetPasswordText">忘记密码？</string>
+    <string name="loginMoreText">更多登录方式</string>
+    <string name="loginPasswordCharSequence">0123456789qwertyuioplkjhgfdsazxcvbnm_</string>
+
     <!-- page name -->
     <string name="page_trace">足迹</string>
     <string name="page_dogs">狗窝</string>

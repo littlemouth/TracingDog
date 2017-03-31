@@ -4,25 +4,37 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.MainActivity">
-    <RelativeLayout
-        android:id="@id/common_activity_title_relativelayout"
+    <LinearLayout
+        android:id="@id/common_activity_title_linearlayout"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/common_bg_green"
-        android:gravity="bottom"
-        android:paddingBottom="10dp">
-        <TextView
-            android:id="@id/main_title_label_textview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:textColor="@android:color/white"
-            android:layout_marginLeft="20dp"/>
-    </RelativeLayout>
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/common_bg_green">
+        <View
+            android:id="@id/status_bar_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/transparent"
+            android:visibility="gone"/>
+        <RelativeLayout
+            android:id="@id/common_activity_title_relativelayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_title_height">
+            <TextView
+                android:id="@id/main_title_label_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@android:color/white"
+                android:layout_marginLeft="20dp"
+                android:layout_centerVertical="true"/>
+        </RelativeLayout>
+    </LinearLayout>
+
     <com.dfst.ui.widget.PageView
         android:id="@id/main_activity_tabview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/common_activity_title_relativelayout"></com.dfst.ui.widget.PageView>
+        android:layout_below="@id/common_activity_title_linearlayout"></com.dfst.ui.widget.PageView>
 
 </RelativeLayout>
