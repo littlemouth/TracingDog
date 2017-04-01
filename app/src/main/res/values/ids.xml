@@ -40,4 +40,7 @@
 
     <!-- dogs fragment -->
     <item name="dogs_listview" type="id">false</item>
+
+    <!-- map activity -->
+    <item name="mapView" type="id">false</item>
 </resources>

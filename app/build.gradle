@@ -23,6 +23,12 @@ android {
         }
     }
 
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
 }
 
 repositories {
@@ -38,6 +44,5 @@ dependencies {
     compile 'com.github.littlemouth.EasyAndroid:core:1.1'
     compile 'com.github.littlemouth.EasyAndroid:ui:1.1'
     compile 'com.github.littlemouth.EasyAndroid:network:1.1'
-    compile files('libs/AMap_2DMap_V2.9.0_20160525.jar')
-    compile files('libs/AMap_Location_V2.4.1_20160414.jar')
+    compile files('libs/Android_Map3D_SDK_V5.0.0_20170309.jar')
 }

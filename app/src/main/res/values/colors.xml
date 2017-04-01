@@ -3,8 +3,8 @@
     <color name="black">#000000</color>
     <color name="white">#FFFFFF</color>
     <color name="transparent">#00000000</color>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#FFFFFF</color>
+    <color name="colorPrimaryDark">#000000</color>
     <color name="color_blue_light">#00BF8E</color>
     <color name="color_login_blue_normal">#00BF8E</color>
     <color name="color_login_blue_pressed">#00CC99</color>

@@ -2,6 +2,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="dfst.com.tracingdog">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/default_head"
@@ -9,10 +20,13 @@
         android:supportsRtl="true"
         android:name="dfst.com.tracingdog.global.TdApp"
         android:theme="@style/AppTheme">
+         
+
+        <uses-permission android:name="android.permission.WRITE_SETTINGS" />
 
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="7916fc24f80689b4450658b422926150" />
+            android:value="22eaf5f6c579e39e18f0c6c8fb32c098" />
 
         <activity android:name=".activity.LoginActivity">
             <intent-filter>
@@ -21,11 +35,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".activity.MainActivity" android:screenOrientation="portrait"/>
+
+        <activity android:name=".activity.TracingMapActivity" android:screenOrientation="portrait"/>
+
+        <!-- 定位需要的服务 使用2.0的定位需要加上这个 -->
+        <service android:name="com.amap.api.location.APSService" >
+        </service>
     </application>
-
-
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
 </manifest>
