@@ -1,11 +1,14 @@
 package dfst.com.tracingdog.activity;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.widget.ImageView;
 
 import com.amap.api.maps.AMap;
 import com.amap.api.maps.CameraUpdateFactory;
@@ -17,6 +20,7 @@ import com.amap.api.maps.model.MarkerOptions;
 import com.amap.api.maps.model.MyLocationStyle;
 
 import dfst.com.tracingdog.R;
+import dfst.com.tracingdog.util.ViewUtil;
 import dfst.com.tracingdog.widget.LocationView;
 
 /**
@@ -25,7 +29,6 @@ import dfst.com.tracingdog.widget.LocationView;
 public class TracingMapActivity extends Activity implements AMap.OnMyLocationChangeListener {
     private MapView mapView;
     private AMap aMap;
-    private LocationView locationView;
     private MyLocationStyle myLocationStyle;
 
     @Override
@@ -35,9 +38,7 @@ public class TracingMapActivity extends Activity implements AMap.OnMyLocationCha
         setContentView(R.layout.activity_tracing_map);
 
         mapView = (MapView) findViewById(R.id.mapView);
-        locationView = (LocationView) findViewById(R.id.locationView);
         mapView.onCreate(savedInstanceState);
-
         init();
     }
 
@@ -52,7 +53,18 @@ public class TracingMapActivity extends Activity implements AMap.OnMyLocationCha
         aMap.setOnMyLocationChangeListener(this);
 
         LatLng latLng = new LatLng(30.192356, 120.201686);
+        LatLng latLng1 = new LatLng(30.202356, 120.181686);
+        LatLng latLng2 = new LatLng(30.212356, 120.221686);
+        LatLng latLng3 = new LatLng(30.2122356, 120.171686);
+        LatLng latLng4 = new LatLng(30.2422356, 120.16686);
+        LatLng latLng5 = new LatLng(30.1822356, 120.18686);
+        aMap.moveCamera(CameraUpdateFactory.changeLatLng(latLng));
         drawMarker(latLng);
+        drawMarker(latLng1);
+        drawMarker(latLng2);
+        drawMarker(latLng3);
+        drawMarker(latLng4);
+        //drawMarker(latLng5);
     }
 
     /**
@@ -65,7 +77,7 @@ public class TracingMapActivity extends Activity implements AMap.OnMyLocationCha
         aMap.setMyLocationStyle(myLocationStyle);
 
         aMap.getUiSettings().setMyLocationButtonEnabled(true);// 设置默认定位按钮是否显示
-        aMap.setMyLocationEnabled(true);// 设置为true表示显示定位层并可触发定位，false表示隐藏定位层并不可触发定位，默认是false
+        //aMap.setMyLocationEnabled(true);// 设置为true表示显示定位层并可触发定位，false表示隐藏定位层并不可触发定位，默认是false
 
     }
 
@@ -138,9 +150,12 @@ public class TracingMapActivity extends Activity implements AMap.OnMyLocationCha
      * 绘制系统默认的1种marker背景图片
      */
     public void drawMarker(LatLng latlng) {
-        View view = getLayoutInflater().inflate(R.layout.layout_locationview, null);
+        Uri defaultHeadUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.mipmap.default_head);
+        View view = ViewUtil.getLocationView(this, defaultHeadUri, Color.BLUE);
         //创建Marker对象
          Marker marker = aMap.addMarker(new MarkerOptions().position(latlng)
                 .icon(BitmapDescriptorFactory.fromView(view)).draggable(true));
     }
+
+
 }

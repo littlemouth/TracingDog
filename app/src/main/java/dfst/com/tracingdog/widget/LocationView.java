@@ -69,7 +69,7 @@ public class LocationView extends View {
 
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(borderWidth);
-        paint.setColor(Color.RED);
+        paint.setColor(borderColor);
         canvas.drawCircle(centerX, centerY, radius - borderWidth * 0.5f, paint);
 
         Path path = new Path();

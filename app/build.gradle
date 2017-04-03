@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+    buildToolsVersion '25.0.2'
 
     defaultConfig {
         applicationId "dfst.com.tracingdog"
@@ -45,4 +45,5 @@ dependencies {
     compile 'com.github.littlemouth.EasyAndroid:ui:1.1'
     compile 'com.github.littlemouth.EasyAndroid:network:1.1'
     compile files('libs/Android_Map3D_SDK_V5.0.0_20170309.jar')
+    compile files('libs/AMap_Location_V3.3.0_20170118.jar')
 }
