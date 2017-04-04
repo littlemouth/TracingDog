@@ -15,6 +15,7 @@ import dfst.com.tracingdog.activity.BaseFragmentActivity;
  * Created by yanfei on 2016-10-25.
  */
 public abstract class TabFragment extends Fragment {
+    private boolean isLoaded = false, isInit = false;
     protected DBManager dbManager;
     protected HttpManager httpManager;
 
@@ -26,4 +27,14 @@ public abstract class TabFragment extends Fragment {
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser && !isLoaded) {
+            onFirstVisible();
+            isLoaded = true;
+        }
+    }
+
+    protected void onFirstVisible() {}
 }
