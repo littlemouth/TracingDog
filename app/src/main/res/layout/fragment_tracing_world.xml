@@ -3,8 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center">
-    <TextView
+    <dfst.com.tracingdog.widget.DogLoadingView
+        android:id="@+id/loading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="圈子"/>
+        android:background="@drawable/loading_dog"/>
 </LinearLayout>

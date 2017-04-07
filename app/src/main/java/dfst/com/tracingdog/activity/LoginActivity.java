@@ -5,6 +5,7 @@ import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageView;
 
@@ -33,15 +34,16 @@ public class LoginActivity extends BaseActivity implements View.OnFocusChangeLis
     private int defaultLineColor;
     @Resource(R.color.common_bg_green)
     private int focusLineColor;
-    @Resource(R.string.loginPasswordCharSequence)
-    private String loginPasswordCharSequence;
 
     @After
     protected void init() {
         super.init();
         loginAccountEditText.setOnFocusChangeListener(this);
         loginAccountEditText.addTextChangedListener(this);
+        loginAccountEditText.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+        loginAccountEditText.setImeOptions(EditorInfo.IME_ACTION_NEXT);
         loginPasswordEditText.setOnFocusChangeListener(this);
+        loginPasswordEditText.setImeOptions(EditorInfo.IME_ACTION_DONE);
     }
 
     @Listener(R.id.loginButton)

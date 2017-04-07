@@ -37,7 +37,6 @@ public class TracingRecordFragment extends TabFragment {
         createData();
         adapter = new RecordAdapter(data, getContext());
         listView.setAdapter(adapter);
-
         return root;
     }
 
@@ -49,7 +48,7 @@ public class TracingRecordFragment extends TabFragment {
 
     private void createData() {
         data = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 5; i++) {
             data.add("item-" + i);
         }
 

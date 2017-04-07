@@ -43,6 +43,7 @@ public class MainActivity extends BaseFragmentActivity {
         options.defaultPosition = 0;
         pageView.init(options);
 
+        pageView.setOffscreenPageLimit(4);
         pageView.setTabDeviderHeight(0.5f);
         pageView.setTabBackgroundColor(ContextCompat.getColor(this, R.color.gray_f5f5f5));
 

@@ -16,4 +16,6 @@
     <color name="gray_cccccc" >#cccccc</color>
     <color name="unchecked_gray" >#8a8a8a</color>
     <color name="textcolor_primary" >#222222</color>
+    <color name="others_header_border" >#FF0000</color>
+    <color name="self_header_border" >#0033FF</color>
 </resources>

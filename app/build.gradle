@@ -41,9 +41,10 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.2.1'
-    compile 'com.github.littlemouth.EasyAndroid:core:1.1'
-    compile 'com.github.littlemouth.EasyAndroid:ui:1.1'
-    compile 'com.github.littlemouth.EasyAndroid:network:1.1'
+    compile 'com.github.littlemouth.EasyAndroid:core:1.2'
+    compile 'com.github.littlemouth.EasyAndroid:ui:1.2'
+    compile 'com.github.littlemouth.EasyAndroid:network:1.2'
+    compile("com.alibaba:fastjson:1.2.16")
     compile files('libs/Android_Map3D_SDK_V5.0.0_20170309.jar')
     compile files('libs/AMap_Location_V3.3.0_20170118.jar')
 }

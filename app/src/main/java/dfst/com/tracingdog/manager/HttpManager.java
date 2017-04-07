@@ -2,6 +2,10 @@ package dfst.com.tracingdog.manager;
 
 import android.content.Context;
 
+import com.dfst.network.NetworkUtils;
+
+import dfst.com.tracingdog.global.DataCenter;
+
 /**
  * Created by yanfei on 2016-11-21.
  */
@@ -24,4 +28,12 @@ public class HttpManager {
         return init(null);
     }
 
+    public void login(String account, String password) {
+        NetworkUtils.http()
+                .post()
+                .url(DataCenter.URL.LOGIN)
+                .addParam("account", account)
+                .addParam("password", password)
+                .build();
+    }
 }

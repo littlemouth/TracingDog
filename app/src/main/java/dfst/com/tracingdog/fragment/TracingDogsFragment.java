@@ -2,7 +2,9 @@ package dfst.com.tracingdog.fragment;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,20 +33,40 @@ public class TracingDogsFragment extends TabFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_tracing_dogs, null);
         InjectCore.inject(this, root);
-        createData();
         adapter = new SimpleGroupListAdapter(getContext(), dogsList);
         dogsListView.setAdapter(adapter);
+        isInit = true;
         return root;
     }
 
     @Override
-    protected void onFirstVisible() {
-        super.onFirstVisible();
-        createData();
+    protected void onFirstVisibleHeavyTask() {
+        loadData();
+        adapter.refreshData();
+    }
+
+    @Override
+    protected void onFirstVisibleUiRefresh() {
         adapter.notifyDataSetChanged();
     }
 
-    private void createData() {
+    private void loadData() {
+        SimpleGroupListAdapter.Item top1 = new SimpleGroupListAdapter.Item("新建联系人");
+        top1.type = SimpleGroupListAdapter.ItemType.TOP;
+        dogsList.add(top1);
+
+        SimpleGroupListAdapter.Item top2 = new SimpleGroupListAdapter.Item("群聊");
+        top2.type = SimpleGroupListAdapter.ItemType.TOP;
+        dogsList.add(top2);
+
+        SimpleGroupListAdapter.Item star1 = new SimpleGroupListAdapter.Item("燕飞");
+        star1.type = SimpleGroupListAdapter.ItemType.STAR;
+        dogsList.add(star1);
+
+        SimpleGroupListAdapter.Item star2 = new SimpleGroupListAdapter.Item("雯雯");
+        star2.type = SimpleGroupListAdapter.ItemType.STAR;
+        dogsList.add(star2);
+
         String nameStr = "李霞 ,杜重治,陈锋,郑伯宁,施华军,吴书振,张宁,马世波,张章,张竹影,韩庆福,刘勇,张忆湫,尚志兴,"
                 + "杜若芳,杨乔松,闫跃进,孙凯,赖祥校,郭晖,贺光明,D邓小燕,白莉惠,杨海霞,利旭日,范永胜,于怀斌,赵淑娜,"
                 + "张淑杰,陈俊军,郭增杰,林云,郭述龙,杨军,张海龙,耿静,程水平,AFAA CHINA,"
@@ -65,21 +87,5 @@ public class TracingDogsFragment extends TabFragment {
             item.uri = defaultHeadUri;
             dogsList.add(item);
         }
-
-        SimpleGroupListAdapter.Item top1 = new SimpleGroupListAdapter.Item("新建联系人");
-        top1.type = SimpleGroupListAdapter.ItemType.TOP;
-        dogsList.add(top1);
-
-        SimpleGroupListAdapter.Item star1 = new SimpleGroupListAdapter.Item("燕飞");
-        star1.type = SimpleGroupListAdapter.ItemType.STAR;
-        dogsList.add(star1);
-
-        SimpleGroupListAdapter.Item top2 = new SimpleGroupListAdapter.Item("群聊");
-        top2.type = SimpleGroupListAdapter.ItemType.TOP;
-        dogsList.add(top2);
-
-        SimpleGroupListAdapter.Item star2 = new SimpleGroupListAdapter.Item("雯雯");
-        star2.type = SimpleGroupListAdapter.ItemType.STAR;
-        dogsList.add(star2);
     }
 }

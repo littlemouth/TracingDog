@@ -4,12 +4,17 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.location.Location;
 import android.net.Uri;
+import android.nfc.Tag;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
-import android.widget.ImageView;
 
+import com.amap.api.location.AMapLocation;
+import com.amap.api.location.AMapLocationClient;
+import com.amap.api.location.AMapLocationClientOption;
+import com.amap.api.location.AMapLocationListener;
 import com.amap.api.maps.AMap;
 import com.amap.api.maps.CameraUpdateFactory;
 import com.amap.api.maps.MapView;
@@ -20,8 +25,7 @@ import com.amap.api.maps.model.MarkerOptions;
 import com.amap.api.maps.model.MyLocationStyle;
 
 import dfst.com.tracingdog.R;
-import dfst.com.tracingdog.util.ViewUtil;
-import dfst.com.tracingdog.widget.LocationView;
+import dfst.com.tracingdog.util.ViewUtils;
 
 /**
  * Created by yanfei on 2016-10-25.
@@ -29,7 +33,10 @@ import dfst.com.tracingdog.widget.LocationView;
 public class TracingMapActivity extends Activity implements AMap.OnMyLocationChangeListener {
     private MapView mapView;
     private AMap aMap;
-    private MyLocationStyle myLocationStyle;
+    private AMapLocationClient locationClient = null;
+    private AMapLocationClientOption locationOption = new AMapLocationClientOption();
+    private Marker mMarker;
+    private int othersBorderColor,selfBorderColor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,47 +46,71 @@ public class TracingMapActivity extends Activity implements AMap.OnMyLocationCha
 
         mapView = (MapView) findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
-        init();
+
+        othersBorderColor = ContextCompat.getColor(this, R.color.others_header_border);
+        selfBorderColor = ContextCompat.getColor(this, R.color.self_header_border);
+
+        initMap();
     }
 
     /**
      * 初始化AMap对象
      */
-    private void init() {
+    private void initMap() {
         if (aMap == null) {
             aMap = mapView.getMap();
             setUpMap();
         }
-        aMap.setOnMyLocationChangeListener(this);
-
-        LatLng latLng = new LatLng(30.192356, 120.201686);
-        LatLng latLng1 = new LatLng(30.202356, 120.181686);
-        LatLng latLng2 = new LatLng(30.212356, 120.221686);
-        LatLng latLng3 = new LatLng(30.2122356, 120.171686);
-        LatLng latLng4 = new LatLng(30.2422356, 120.16686);
-        LatLng latLng5 = new LatLng(30.1822356, 120.18686);
-        aMap.moveCamera(CameraUpdateFactory.changeLatLng(latLng));
-        drawMarker(latLng);
-        drawMarker(latLng1);
-        drawMarker(latLng2);
-        drawMarker(latLng3);
-        drawMarker(latLng4);
-        //drawMarker(latLng5);
+        initLocation();
     }
 
     /**
      * 设置一些amap的属性
      */
     private void setUpMap() {
-        aMap.moveCamera(CameraUpdateFactory.zoomTo(12));
-        // 如果要设置定位的默认状态，可以在此处进行设置
-        myLocationStyle = new MyLocationStyle();
-        aMap.setMyLocationStyle(myLocationStyle);
-
-        aMap.getUiSettings().setMyLocationButtonEnabled(true);// 设置默认定位按钮是否显示
-        //aMap.setMyLocationEnabled(true);// 设置为true表示显示定位层并可触发定位，false表示隐藏定位层并不可触发定位，默认是false
-
+        aMap.moveCamera(CameraUpdateFactory.zoomTo(15));
+        aMap.getUiSettings().setRotateGesturesEnabled(false);
+        aMap.setOnMyLocationChangeListener(this);
     }
+
+    /**
+     * 设置定位参数
+     */
+    private void initLocation() {
+        locationClient = new AMapLocationClient(this.getApplicationContext());
+        locationOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);//可选，设置定位模式，可选的模式有高精度、仅设备、仅网络。默认为高精度模式
+        locationOption.setGpsFirst(false);//可选，设置是否gps优先，只在高精度模式下有效。默认关闭
+        locationOption.setHttpTimeOut(10000);//可选，设置网络请求超时时间。默认为30秒。在仅设备模式下无效
+        locationOption.setInterval(2000);
+        locationClient.setLocationOption(locationOption);
+        // 设置定位监听
+        locationClient.setLocationListener(locationListener);
+        locationClient.startLocation();
+    }
+
+    /**
+     * 定位监听
+     */
+    AMapLocationListener locationListener = new AMapLocationListener() {
+        @Override
+        public void onLocationChanged(AMapLocation loc) {
+            if (null != loc) {
+                //解析定位结果
+                Log.i("Test", loc.getAddress());
+                LatLng latLng = new LatLng(loc.getLatitude(),loc.getLongitude());
+                if (mMarker == null) {
+                    mMarker = drawMarker(latLng, othersBorderColor);
+                    aMap.moveCamera(CameraUpdateFactory.changeLatLng(latLng));
+                } else {
+                    mMarker.setPosition(latLng);
+                }
+
+            } else {
+
+            }
+        }
+    };
+
 
     /**
      * 方法必须重写
@@ -115,6 +146,7 @@ public class TracingMapActivity extends Activity implements AMap.OnMyLocationCha
     protected void onDestroy() {
         super.onDestroy();
         mapView.onDestroy();
+        destroyLocation();
     }
 
     @Override
@@ -149,13 +181,25 @@ public class TracingMapActivity extends Activity implements AMap.OnMyLocationCha
     /**
      * 绘制系统默认的1种marker背景图片
      */
-    public void drawMarker(LatLng latlng) {
+    public Marker drawMarker(LatLng latlng, int color) {
         Uri defaultHeadUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.mipmap.default_head);
-        View view = ViewUtil.getLocationView(this, defaultHeadUri, Color.BLUE);
+        View view = ViewUtils.getLocationView(this, defaultHeadUri, color);
         //创建Marker对象
          Marker marker = aMap.addMarker(new MarkerOptions().position(latlng)
                 .icon(BitmapDescriptorFactory.fromView(view)).draggable(true));
+        return marker;
     }
 
+    private void destroyLocation(){
+        if (null != locationClient) {
+            /**
+             * 如果AMapLocationClient是在当前Activity实例化的，
+             * 在Activity的onDestroy中一定要执行AMapLocationClient的onDestroy
+             */
+            locationClient.onDestroy();
+            locationClient = null;
+            locationOption = null;
+        }
+    }
 
 }
